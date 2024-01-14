@@ -9,7 +9,7 @@ const state = {
  * Load the next page of data
  */
 const loadNextPage = async() => {
-    loadUsersByPage(state.currentPage+1);
+    await loadUsersByPage(state.currentPage + 1);
 }
 
 /**
