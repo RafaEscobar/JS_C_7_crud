@@ -1,3 +1,5 @@
+import {loadUsersByPage} from '../modules/index';
+
 const state = {
     currentPage: 0,
     users: [],
@@ -7,7 +9,7 @@ const state = {
  * Load the next page of data
  */
 const loadNextPage = async() => {
-
+    await loadUsersByPage(state.currentPage + 1);
 }
 
 /**
