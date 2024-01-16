@@ -7,4 +7,6 @@ import usersStore from "./storage/users-store";
 export const userApp = async(element) => {
     element.innerText = 'Cargando...';
     await usersStore.loadNextPage();
+
+    console.log(usersStore.getUsers());
 }

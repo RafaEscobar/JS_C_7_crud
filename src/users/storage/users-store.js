@@ -9,11 +9,15 @@ const state = {
  * Load the next page of data
  */
 const loadNextPage = async() => {
-    await loadUsersByPage(state.currentPage + 1);
+    const users = await loadUsersByPage(state.currentPage + 1);
+    if (users.length == 0) return;
+
+    state.currentPage += 1;
+    state.users = users;
 }
 
 /**
- * Load the previous page of data 
+ * Load the previous page of data
  */
 const loadPreviousPage = async() => {
 
@@ -38,6 +42,6 @@ export default {
     loadPreviousPage,
     onUserChange,
     reloadPage,
-    getUsers: () => { [...state.users] },
-    getCurrentPage: () => { state.currentPage },
+    getUsers: () => [...state.users],
+    getCurrentPage: () => state.currentPage,
 }
