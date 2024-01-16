@@ -5,7 +5,7 @@ import { User } from "../models/user";
  * @param {UserDataApi} userData
  * @returns User
  */
-const userMapper = (userData) => {
+export const userMapper = (userData) => {
     const {
         id,
         isActive,
