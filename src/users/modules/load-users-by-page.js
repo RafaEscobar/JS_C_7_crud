@@ -9,5 +9,5 @@ export const loadUsersByPage = async(page = 1) => {
     const res = await fetch(url);
     const resBody = await res.json();
 
-    return resBody['data'].map(user => userMapper(user));
+    return resBody['data'].map(userMapper);
 }
