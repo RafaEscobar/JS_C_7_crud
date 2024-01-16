@@ -1,7 +1,7 @@
 import { userMapper } from "../mappers/user.mapper";
 
 /**
- * Function to load the page of users
+ * Function to get the users from the API, map them and load them on the page
  * @param {number} page
  */
 export const loadUsersByPage = async(page = 1) => {
@@ -9,11 +9,5 @@ export const loadUsersByPage = async(page = 1) => {
     const res = await fetch(url);
     const resBody = await res.json();
 
-    const users = [];
-
-    resBody['data'].forEach(user => {
-        users.push(userMapper(user));
-    });
-
-    console.log(users);
+    return resBody['data'].map(user => userMapper(user));
 }
