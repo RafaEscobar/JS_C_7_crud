@@ -1,3 +1,4 @@
+import { renderTable } from "./presentation/render-table/render-table";
 import usersStore from "./storage/users-store";
 
 /**
@@ -7,6 +8,7 @@ import usersStore from "./storage/users-store";
 export const userApp = async(element) => {
     element.innerText = 'Cargando...';
     await usersStore.loadNextPage();
-
+    element.innerText = '';
     console.log(usersStore.getUsers());
+    renderTable(element);
 }
