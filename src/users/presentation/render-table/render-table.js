@@ -4,14 +4,15 @@ let table;
 
 const createTable = () => {
     const table = document.createElement("table");
+    table.classList.add("bg-white", "shadow-md", "rounded-xl");
     const tHead = document.createElement("thead");
     const tBody = document.createElement("tbody");
     tHead.innerHTML = `
-        <tr>
-            <td>Nombre</td>
-            <td>Apellidos</td>
-            <td>Genero</td>
-            <td>Estatus</td>
+        <tr class="bg-blue-gray-100 text-gray-700">
+            <td class="py-3 px-4 text-left font-semibold">Nombre</td>
+            <td class="py-3 px-4 text-left font-semibold">Apellidos</td>
+            <td class="py-3 px-4 text-left font-semibold">Genero</td>
+            <td class="py-3 px-4 text-left font-semibold">Estatus</td>
         </tr>
     `;
 
