@@ -26,6 +26,7 @@ export const renderBtns = (element) => {
 
     nextBtn.addEventListener('click', async() => {
         await usersStore.loadNextPage();
+        renderTable(element);
         currentPageLabel.innerText = usersStore.getCurrentPage();
     });
 
