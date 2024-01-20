@@ -2,8 +2,8 @@ import usersStore from "../storage/users-store";
 import "./app.css"
 
 /**
- * 
- * @param {HTMLDivElement} element 
+ *
+ * @param {HTMLDivElement} element
  */
 export const renderBtns = (element) => {
     const nextBtn = document.createElement("button");
