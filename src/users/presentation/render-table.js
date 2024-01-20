@@ -1,4 +1,4 @@
-import usersStore from "../../storage/users-store";
+import usersStore from "../storage/users-store";
 
 let table
 
@@ -29,8 +29,6 @@ const createTable = () => {
  * @param {HTMLDivElement} element
  */
 export const renderTable = (element) => {
-    console.log(status);
-
     const users = usersStore.getUsers();
 
     if ( !table ) {

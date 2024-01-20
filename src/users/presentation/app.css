@@ -1,0 +1,11 @@
+.btns {
+    @apply ;
+}
+
+.pageLabel {
+    @apply block text-2xl font-semibold;
+}
+
+.divContainer {
+    @apply ;
+}
