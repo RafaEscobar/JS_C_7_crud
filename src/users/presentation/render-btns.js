@@ -30,4 +30,10 @@ export const renderBtns = (element) => {
         currentPageLabel.innerText = usersStore.getCurrentPage();
     });
 
+    prevBtn.addEventListener('click', async() => {
+        await usersStore.loadPreviousPage();
+        renderTable(element);
+        currentPageLabel.innerText = usersStore.getCurrentPage();
+    });
+
 }
