@@ -1,19 +1,22 @@
 import usersStore from "../../storage/users-store";
 
-let table;
+let table
 
 const createTable = () => {
     const table = document.createElement("table");
-    table.classList.add("bg-white", "shadow-md", "rounded-xl");
     const tHead = document.createElement("thead");
     const tBody = document.createElement("tbody");
+
+    table.classList.add("w-5/12", "text-sm", "text-left",  "text-gray-500");
+    tHead.classList.add("text-xs", "text-gray-700", "uppercase", "bg-gray-50");
+
     tHead.innerHTML = `
-        <tr class="bg-blue-gray-100 text-gray-700">
-            <td class="py-3 px-4 text-left font-semibold">Nombre</td>
-            <td class="py-3 px-4 text-left font-semibold">Apellidos</td>
-            <td class="py-3 px-4 text-left font-semibold">Genero</td>
-            <td class="py-3 px-4 text-left font-semibold">Estatus</td>
-            <td class="py-3 px-4 text-left font-semibold">Opciones</td>
+        <tr>
+            <th scope="col" class="py-3 px-6">Nombre</th>
+            <th scope="col" class="py-3 px-6">Apellidos</th>
+            <th scope="col" class="py-3 px-6">Genero</th>
+            <th scope="col" class="py-3 px-6">Estatus</th>
+            <th scope="col" class="py-3 px-6">Opciones</th>
         </tr>
     `;
 
@@ -21,8 +24,11 @@ const createTable = () => {
     return table;
 }
 
+/**
+ *
+ * @param {HTMLDivElement} element
+ */
 export const renderTable = (element) => {
-
     const users = usersStore.getUsers();
 
     if ( !table ) {
@@ -31,20 +37,21 @@ export const renderTable = (element) => {
     }
 
     let tableBody = '';
+
     users.forEach(user => {
         tableBody += `
-            <tr class="bg-blue-gray-100 text-gray-700">
-                <td class="py-3 px-4 text-left">${user.firstName}</td>
-                <td class="py-3 px-4 text-left">${user.lastName}</td>
-                <td class="py-3 px-4 text-left">${user.gender}</td>
-                <td class="py-3 px-4 text-left">${user.isActive}</td>
-                <td class="py-3 px-4 text-left">
+            <tr>
+                <th scope="col" class="py-3 px-6">${user.firstName}</th>
+                <th scope="col" class="py-3 px-6">${user.lastName}</th>
+                <th scope="col" class="py-3 px-6">${user.gender}</th>
+                <th scope="col" class="py-3 px-6">${user.isActive}</th>
+                <th scope="col" class="py-3 px-6">
                     <div>
-                        <a href="#" class="text-blue-500">Seleccionar</a>
+                        <a href="#" class="text-blue-500" data-id="${user.id}">Seleccionar</a>
                         |
-                        <a href="#" class="text-red-500">Eliminar</a>
+                        <a href="#" class="text-red-500" data-id="${user.id}">Eliminar</a>
                     </div>
-                </td>
+                </th>
             </tr>
         `;
     });
