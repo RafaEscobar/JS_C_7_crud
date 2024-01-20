@@ -29,6 +29,8 @@ const createTable = () => {
  * @param {HTMLDivElement} element
  */
 export const renderTable = (element) => {
+    console.log(status);
+
     const users = usersStore.getUsers();
 
     if ( !table ) {
@@ -43,8 +45,8 @@ export const renderTable = (element) => {
             <tr>
                 <th scope="col" class="py-3 px-6">${user.firstName}</th>
                 <th scope="col" class="py-3 px-6">${user.lastName}</th>
-                <th scope="col" class="py-3 px-6">${user.gender}</th>
-                <th scope="col" class="py-3 px-6">${user.isActive}</th>
+                <th scope="col" class="py-3 px-6">${(user.gender=='female') ? 'Femenino' : 'Masculino'}</th>
+                <th scope="col" class="py-3 px-6">${(user.isActive) ? 'Activo' : 'Inactivo'}</th>
                 <th scope="col" class="py-3 px-6">
                     <div>
                         <a href="#" class="text-blue-500" data-id="${user.id}">Seleccionar</a>
