@@ -13,6 +13,7 @@ const createTable = () => {
             <td class="py-3 px-4 text-left font-semibold">Apellidos</td>
             <td class="py-3 px-4 text-left font-semibold">Genero</td>
             <td class="py-3 px-4 text-left font-semibold">Estatus</td>
+            <td class="py-3 px-4 text-left font-semibold">Opciones</td>
         </tr>
     `;
 
@@ -37,6 +38,13 @@ export const renderTable = (element) => {
                 <td class="py-3 px-4 text-left">${user.lastName}</td>
                 <td class="py-3 px-4 text-left">${user.gender}</td>
                 <td class="py-3 px-4 text-left">${user.isActive}</td>
+                <td class="py-3 px-4 text-left">
+                    <div>
+                        <a href="#" class="text-blue-500">Seleccionar</a>
+                        |
+                        <a href="#" class="text-red-500">Eliminar</a>
+                    </div>
+                </td>
             </tr>
         `;
     });
