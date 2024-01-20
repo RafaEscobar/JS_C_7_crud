@@ -8,7 +8,6 @@ import usersStore from "./storage/users-store";
 export const userApp = async(element) => {
     element.innerText = 'Cargando...';
     await usersStore.loadNextPage();
-    element.innerText = '';
     console.log(usersStore.getUsers());
     renderTable(element);
 }

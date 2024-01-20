@@ -26,7 +26,20 @@ export const renderTable = (element) => {
 
     if ( !table ) {
         table = createTable();
-        element.append(table);
+        element.replaceChildren(table);
     }
 
+    let tableBody = '';
+    users.forEach(user => {
+        tableBody += `
+            <tr class="bg-blue-gray-100 text-gray-700">
+                <td class="py-3 px-4 text-left">${user.firstName}</td>
+                <td class="py-3 px-4 text-left">${user.lastName}</td>
+                <td class="py-3 px-4 text-left">${user.gender}</td>
+                <td class="py-3 px-4 text-left">${user.isActive}</td>
+            </tr>
+        `;
+    });
+
+    table.querySelector("tbody").innerHTML = tableBody;
 }
