@@ -1,6 +1,7 @@
 import {loadUsersByPage} from '../modules/index';
 
 const state = {
+    pages: 0,
     currentPage: 0,
     users: [],
 }
@@ -37,15 +38,21 @@ const reloadPage = () => {
 
 }
 
+const setCurrentPage = (pages) => {
+    state.pages = pages;
+}
+
 export default {
     loadNextPage,
     loadPreviousPage,
     onUserChange,
     reloadPage,
+    setCurrentPage,
     /**
-     * 
+     *
      * @returns {User[]}
      */
     getUsers: () => [...state.users],
     getCurrentPage: () => state.currentPage,
+    getPages: () => state.pages,
 }
