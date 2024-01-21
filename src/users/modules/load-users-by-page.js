@@ -10,7 +10,7 @@ export const loadUsersByPage = async(page = 1) => {
     const res = await fetch(url);
     const resBody = await res.json();
 
-    usersStore.setCurrentPage(resBody['pages']);
+    usersStore.setPages(resBody['pages']);
 
     return resBody['data'].map(userMapper);
 }

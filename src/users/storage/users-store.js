@@ -11,7 +11,7 @@ const state = {
  */
 const loadNextPage = async() => {
     const users = await loadUsersByPage(state.currentPage + 1);
-    if (state.currentPage >= state.pages) return;
+    if (state.currentPage == state.pages) return;
 
     state.currentPage += 1;
     state.users = users;
@@ -42,7 +42,7 @@ const reloadPage = () => {
 
 }
 
-const setCurrentPage = (pages) => {
+const setPages = (pages) => {
     state.pages = pages;
 }
 
@@ -51,7 +51,7 @@ export default {
     loadPreviousPage,
     onUserChange,
     reloadPage,
-    setCurrentPage,
+    setPages,
     /**
      *
      * @returns {User[]}
