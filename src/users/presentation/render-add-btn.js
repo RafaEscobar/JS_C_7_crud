@@ -4,6 +4,8 @@ export const renderAddButton = (element) => {
     const divContainer = document.createElement("div");
     const btn = document.createElement("button");
 
+    btn.setAttribute('id', 'openModal');
+
     btn.classList.add("flex","items-center","justify-center","rounded-full","bg-blue-500","shadow-xl","w-12","h-12");
     divContainer.classList.add("group","fixed","bottom-0","right-0","flex","items-end","justify-end","p-10");
 
@@ -14,6 +16,7 @@ export const renderAddButton = (element) => {
             </svg>
         </span>
     `;
+
     divContainer.append(btn);
     element.append(divContainer);
 
