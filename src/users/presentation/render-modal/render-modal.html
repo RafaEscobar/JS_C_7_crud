@@ -1,9 +1,40 @@
 <div>
-    <div class="fixed inset-0 bg-black opacity-50 z-50"></div>
-    <div class="fixed inset-0 flex items-center justify-center z-50">
-        <div class="bg-white p-8 rounded shadow-md">
-            <p class="text-gray-800">Este es un modal sencillo con Tailwind CSS.</p>
-            <button class="bg-red-500 text-white" id="closeModal">cerrar</button>
+    <div class="fixed inset-0 z-50 bg-black opacity-50"></div>
+    <div class="fixed inset-0 z-50 flex items-center justify-center">
+        <div class="rounded bg-white p-8 shadow-md">
+            <p class="text-2xl font-medium text-gray-800">Crear registro de usuario</p>
+            <div class="mt-6">
+                <form action="" method="post" class="flex flex-col">
+                    <label class="flex flex-col gap-1 mb-6">
+                        <span class="font-medium">Nombre:</span>
+                        <input type="text" name="" id="" class="rounded-xl bg-gray-700 text-white px-2 py-1" />
+                    </label>
+                    <label class="flex flex-col gap-1 mb-6">
+                        <span class="font-medium">Apellidos:</span>
+                        <input type="text" name="" id="" class="rounded-xl bg-gray-700 text-white px-2 py-1" />
+                    </label>
+                    <div class="mt-2 mb-6 flex flex-col">
+                        <label for="" class="font-medium">Genero</label>
+                        <select name="" id="" class="bg-gray-700 rounded-xl px-2 py-1 text-white">
+                            <option value="">-- Eligue una opción --</option>
+                            <option value="">Masculino</option>
+                            <option value="">Femenino</option>
+                        </select>
+                    </div>
+                    <label class="flex flex-col gap-1 mb-6">
+                        <span class="font-medium">Balance:</span>
+                        <input type="number" name="" id="" class="rounded-xl bg-gray-700 text-white px-2 py-1" />
+                    </label>
+                </form>
+            </div>
+            <div class="flex justify-end gap-4">
+                <button
+                    class="border-gray-700 border-2 rounded-2xl px-2 py-1 text-gray-700 font-semibold hover:bg-gray-700 hover:text-white active:text-gray-700 active:bg-white"
+                    id="closeModal">Cerrar</button>
+                <button
+                    class="hover:bg-blue-400 rounded-2xl px-2 py-1 hover:text-white font-semibold bg-white text-blue-400 active:text-blue-400 active:bg-white border-2 border-blue-400"
+                    id="closeModal">Guardar</button>
+            </div>
         </div>
     </div>
 </div>

@@ -7,7 +7,7 @@ export const renderAddButton = (element) => {
     btn.setAttribute('id', 'openModal');
 
     btn.classList.add("flex","items-center","justify-center","rounded-full","bg-blue-500","shadow-xl","w-12","h-12");
-    divContainer.classList.add("group","fixed","bottom-0","right-0","flex","items-end","justify-end","p-10", "bg-red-500");
+    divContainer.classList.add("group","fixed","bottom-0","right-0","flex","items-end","justify-end","p-10");
 
     btn.innerHTML = `
         <span>
