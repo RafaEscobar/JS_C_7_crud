@@ -12,7 +12,6 @@ export const renderModal = (element) => {
     modalContainer = document.createElement("div");
     modalContainer.className = "relative flex flex-col items-center justify-center bg-white hidden";
     modalContainer.innerHTML = modal;
-
     element.append(modalContainer);
 
     const closeModal = document.querySelector("#closeModal");
