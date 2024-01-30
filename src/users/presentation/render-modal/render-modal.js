@@ -30,8 +30,9 @@ export const renderModal = (element) => {
         event.preventDefault();
     });
 
-    modalShadow.addEventListener('click', (event) => {
-        console.log(modalShadow);
+    modalContainer.addEventListener('click', (event) => {
+        if (event.target.id !== 'modal-shadow') return;
+        modalContainer.classList.add('hidden');
     });
 
 
