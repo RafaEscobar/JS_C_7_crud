@@ -7,7 +7,7 @@
                 <form class="flex flex-col" id="modal-form">
                     <label class="flex flex-col gap-1 mb-6">
                         <span class="font-medium">Nombre:</span>
-                        <input type="text" name="name" id="name" class="rounded-xl bg-gray-700 text-white px-2 py-1" />
+                        <input type="text" name="first_name" id="first_name" class="rounded-xl bg-gray-700 text-white px-2 py-1" />
                     </label>
                     <label class="flex flex-col gap-1 mb-6">
                         <span class="font-medium">Apellidos:</span>
@@ -21,9 +21,13 @@
                             <option value="f">Femenino</option>
                         </select>
                     </div>
-                    <label class="flex flex-col gap-1 mb-6">
+                    <label class="flex flex-col gap-1">
                         <span class="font-medium">Balance:</span>
-                        <input type="number" name="balence" id="balence" class="rounded-xl bg-gray-700 text-white px-2 py-1" />
+                        <input type="number" name="balance" id="balance" class="rounded-xl bg-gray-700 text-white px-2 py-1" />
+                    </label>
+                    <label for="isActive" class="flex items-center gap-2 mb-8 mt-6">
+                        <input type="checkbox" class="form-checkbox h-5 w-5 accent-blue-500" name="isActive" id="isActive">
+                        <span>Usuario activo</span>
                     </label>
                     <div class="flex justify-end gap-4">
                         <button

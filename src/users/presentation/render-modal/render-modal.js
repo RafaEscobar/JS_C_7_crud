@@ -20,6 +20,7 @@ export const renderModal = (element) => {
     //? Listeners
     closeModal.addEventListener('click', () => {
         modalContainer.classList.add('hidden');
+        form?.reset();
     });
 
     btnOpenModal.addEventListener('click', () => {
@@ -28,16 +29,20 @@ export const renderModal = (element) => {
 
     form.addEventListener('submit', (event) => {
         event.preventDefault();
-        
+
         const formData = new FormData(form);
+        const userData = {};
         for ( const [key, value] of formData ) {
-            console.log(key, value);
+            userData[key] = (key == 'balance') ? (+value) : value;
+            userData[key] = (key == 'isActive') ?
+                ((value === 'on') ? true : false) : value;
         }
     });
 
     modalContainer.addEventListener('click', (event) => {
         if (event.target.id !== 'modal-shadow') return;
         modalContainer.classList.add('hidden');
+        form?.reset();
     });
 
 
