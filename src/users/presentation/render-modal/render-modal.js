@@ -28,6 +28,11 @@ export const renderModal = (element) => {
 
     form.addEventListener('submit', (event) => {
         event.preventDefault();
+        
+        const formData = new FormData(form);
+        for ( const [key, value] of formData ) {
+            console.log(key, value);
+        }
     });
 
     modalContainer.addEventListener('click', (event) => {
