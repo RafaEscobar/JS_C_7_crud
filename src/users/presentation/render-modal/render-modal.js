@@ -28,6 +28,12 @@ export const renderModal = (element, userCallback) => {
         modalContainer.classList.remove("hidden");
     });
 
+    modalContainer.addEventListener('click', (event) => {
+        if (event.target.id !== 'modal-shadow') return;
+        modalContainer.classList.add('hidden');
+        form?.reset();
+    });
+
     form.addEventListener('submit', async(event) => {
         event.preventDefault();
 
@@ -41,14 +47,6 @@ export const renderModal = (element, userCallback) => {
 
         await userCallback(userData);
     });
-
-    modalContainer.addEventListener('click', (event) => {
-        if (event.target.id !== 'modal-shadow') return;
-        modalContainer.classList.add('hidden');
-        form?.reset();
-    });
-
-
 }
 
 /**
