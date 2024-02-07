@@ -1,4 +1,4 @@
-import { userMapper } from "../mappers/user.mapper";
+import { userMapper } from "../mappers";
 import usersStore from "../storage/users-store";
 
 /**

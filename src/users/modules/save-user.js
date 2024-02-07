@@ -1,3 +1,4 @@
+import { localToSerMapper } from "../mappers";
 import { User } from "../models/user";
 
 /**
@@ -6,8 +7,7 @@ import { User } from "../models/user";
  */
 export const saveUser = async( userData ) => {
     const user = new User(userData);
-
-    // TODO: Falta mapper
+    const userMapping = localToSerMapper(user);
 
     if ( user.id ) {
         // TODO: Codigo para actualizar usuario
@@ -15,7 +15,7 @@ export const saveUser = async( userData ) => {
         return;
     }
 
-    return await createUser(user);
+    return await createUser(userMapping);
 }
 
 /**
