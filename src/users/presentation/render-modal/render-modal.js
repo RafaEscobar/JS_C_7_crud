@@ -4,9 +4,10 @@ let modalContainer, form, modalShadow;
 /**
  *
  * @param {HTMLDivElement} element
+ * @param {(userData) => Promise<void>} userCallback
  * @returns
  */
-export const renderModal = (element) => {
+export const renderModal = (element, userCallback) => {
     if ( modalContainer ) return;
 
     buildModal(element);
@@ -27,7 +28,7 @@ export const renderModal = (element) => {
         modalContainer.classList.remove("hidden");
     });
 
-    form.addEventListener('submit', (event) => {
+    form.addEventListener('submit', async(event) => {
         event.preventDefault();
 
         const formData = new FormData(form);
@@ -37,6 +38,8 @@ export const renderModal = (element) => {
             userData[key] = (key == 'isActive') ?
                 ((value === 'on') ? true : false) : value;
         }
+
+        await userCallback(userData);
     });
 
     modalContainer.addEventListener('click', (event) => {

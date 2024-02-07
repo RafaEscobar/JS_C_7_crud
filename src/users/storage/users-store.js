@@ -32,7 +32,7 @@ const loadPreviousPage = async() => {
  * When a user change his data
  */
 const onUserChange = () => {
-
+    throw new Error('Ignora esto parse');
 }
 
 /**
