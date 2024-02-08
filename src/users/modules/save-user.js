@@ -7,6 +7,10 @@ import { User } from "../models/user";
  */
 export const saveUser = async( userData ) => {
     const user = new User(userData);
+    let validateMess = validate(user);
+
+    (validateMess > 0) ? alert(validateMess.join(' | ')) : null
+
     const userMapping = localToSerMapper(user);
 
     if ( user.id ) {
@@ -35,4 +39,23 @@ const createUser = async( userData ) => {
 
     const newUser = await response.json();
     return newUser;
+}
+
+/**
+ *
+ * @param {Like<User>} userData
+ */
+const validate = (userData) => {
+    let message = [];
+    if (userData.firstName == '') {
+        message.push('El campo nombre es requerido');
+    }
+    if (userData.lastName == '') {
+        message.push('El campo de apellidos es que requerido');
+    }
+    if (userData.gender == '') {
+        message.push('El genero es requerido');
+    }
+
+    return message;
 }
