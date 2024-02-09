@@ -26,6 +26,16 @@ const createTable = () => {
 
 /**
  *
+ * @param {MouseEvent} event
+ */
+const selectUser = (event) => {
+    const selectedUser = event.target.closest('.select-user');
+    if (selectedUser == null) return;
+
+}
+
+/**
+ *
  * @param {HTMLDivElement} element
  */
 export const renderTable = (element) => {
@@ -35,6 +45,8 @@ export const renderTable = (element) => {
         table = createTable();
         element.replaceChildren(table);
     }
+
+    table.addEventListener('click', selectUser);
 
     let tableBody = '';
 
@@ -47,9 +59,9 @@ export const renderTable = (element) => {
                 <th scope="col" class="py-3 px-6">${(user.isActive) ? 'Activo' : 'Inactivo'}</th>
                 <th scope="col" class="py-3 px-6">
                     <div>
-                        <a href="#" class="text-blue-500" data-id="${user.id}">Seleccionar</a>
+                        <a href="#" class="text-blue-500 select-user" data-id="${user.id}">Seleccionar</a>
                         |
-                        <a href="#" class="text-red-500" data-id="${user.id}">Eliminar</a>
+                        <a href="#" class="text-red-500 delete-user" data-id="${user.id}">Eliminar</a>
                     </div>
                 </th>
             </tr>

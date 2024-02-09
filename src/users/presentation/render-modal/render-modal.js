@@ -1,5 +1,5 @@
 import modal from "./render-modal.html?raw";
-let modalContainer, form, modalShadow;
+let modalContainer, form;
 
 /**
  *
@@ -7,6 +7,20 @@ let modalContainer, form, modalShadow;
  * @param {(userData) => Promise<void>} userCallback
  * @returns
  */
+
+/**
+ *
+ * @param {String|Number} id
+ */
+export const showModal = (id=null) => {
+    modalContainer.classList.remove("hidden");
+}
+
+export const hiddenModal = () => {
+    modalContainer.classList.add('hidden');
+    form?.reset();
+}
+
 export const renderModal = (element, userCallback) => {
     if ( modalContainer ) return;
 
@@ -14,25 +28,16 @@ export const renderModal = (element, userCallback) => {
 
     //* References
     form = document.querySelector("#modal-form");
-    modalShadow = document.querySelector("#modal-shadow");
-    const closeModal = document.querySelector("#closeModal");
-    const btnOpenModal = document.querySelector("#openModal");
+    const btnClose = document.querySelector("#closeModal");
 
-    //? Listeners
-    closeModal.addEventListener('click', () => {
-        modalContainer.classList.add('hidden');
-        form?.reset();
-    });
-
-    btnOpenModal.addEventListener('click', () => {
-        modalContainer.classList.remove("hidden");
-    });
-
+    // Listeners
     modalContainer.addEventListener('click', (event) => {
         if (event.target.id !== 'modal-shadow') return;
-        modalContainer.classList.add('hidden');
-        form?.reset();
+        hiddenModal();
     });
+    btnClose.addEventListener('click', hiddenModal);
+
+
 
     form.addEventListener('submit', async(event) => {
         event.preventDefault();

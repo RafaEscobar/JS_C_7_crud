@@ -1,4 +1,4 @@
-
+import { showModal } from "./render-modal/render-modal";
 
 export const renderAddButton = (element) => {
     const divContainer = document.createElement("div");
@@ -19,4 +19,6 @@ export const renderAddButton = (element) => {
 
     divContainer.append(btn);
     element.append(divContainer);
+
+    btn.addEventListener('click', showModal);
 }
