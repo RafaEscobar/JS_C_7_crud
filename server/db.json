@@ -451,33 +451,19 @@
       "gender": "male"
     },
     {
-      "id": "bfae",
-      "first_name": "",
-      "last_name": "",
-      "gender": "",
-      "balance": ""
-    },
-    {
-      "id": "99cb",
-      "first_name": "",
-      "last_name": "",
-      "gender": "",
-      "balance": ""
-    },
-    {
-      "id": "1487",
-      "first_name": "",
-      "last_name": "",
-      "gender": "",
-      "balance": ""
-    },
-    {
-      "id": "a7e6",
+      "id": "6aee",
       "first_name": "Rafa",
       "last_name": "Escobar",
+      "gender": "male",
+      "balance": ""
+    },
+    {
+      "id": "5604",
+      "first_name": "Rafael ",
+      "last_name": "Escobar Gutierrez",
       "isActive": true,
       "gender": "male",
-      "balance": "23"
+      "balance": 1800
     }
   ]
 }

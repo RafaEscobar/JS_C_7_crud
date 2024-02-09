@@ -7,9 +7,12 @@ import { User } from "../models/user";
  */
 export const saveUser = async( userData ) => {
     const user = new User(userData);
-    let validateMess = validate(user);
 
-    (validateMess > 0) ? alert(validateMess.join(' | ')) : null
+    let validateMess = validate(user);
+    if (validateMess.length > 0) {
+        alert(validateMess.join(' | '));
+        return;
+    }
 
     const userMapping = localToSerMapper(user);
 

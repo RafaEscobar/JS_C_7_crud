@@ -40,11 +40,14 @@ export const renderModal = (element, userCallback) => {
         const formData = new FormData(form);
         const userData = {};
         for ( const [key, value] of formData ) {
-            userData[key] = (key == 'balance') ? (+value) : value;
-            userData[key] = (key == 'isActive') ?
-                ((value === 'on') ? true : false) : value;
+            if (key === 'balance') {
+                userData[key] = +value;
+            } else if ((key == 'isActive') && (value === 'on') ) {
+                userData[key] = true;
+            } else {
+                userData[key] = value;
+            }
         }
-
         await userCallback(userData);
     });
 }
