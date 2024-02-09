@@ -29,10 +29,23 @@ const loadPreviousPage = async() => {
 }
 
 /**
- * When a user change his data
+ *
+ * @param {User} userData
  */
-const onUserChange = () => {
-    throw new Error('Ignora esto parse');
+const onUserChange = ( userData ) => {
+    let wasFound = false;
+
+    state.users = state.users.map( user => {
+        if ( user.id == userData.id) {
+            wasFound = true;
+            return userData;
+        }
+        return user;
+    });
+
+    if (state.users.length < 10 && !wasFound) {
+        state.users.push(userData);
+    }
 }
 
 /**
