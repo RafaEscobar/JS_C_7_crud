@@ -24,8 +24,8 @@ const loadPreviousPage = async() => {
     if (state.currentPage == 1) return;
     const users = await loadUsersByPage(state.currentPage - 1);
 
+    state.users = users;
     state.currentPage -= 1;
-    state.users = users
 }
 
 /**
@@ -53,10 +53,10 @@ const onUserChange = ( userData ) => {
  */
 const reloadPage = async() => {
     const users = await loadUsersByPage(state.currentPage);
-    if ( users.length == 0 ) {
-        await loadPreviousPage();
-        return;
-    }
+    // if ( users.length === 0 ) {
+    //     await loadPreviousPage();
+    //     return;
+    // }
     state.users = users;
 }
 
