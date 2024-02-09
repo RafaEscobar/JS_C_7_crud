@@ -1,5 +1,10 @@
 import modal from "./render-modal.html?raw";
-let modalContainer, form;
+import { getUserById } from "../../modules";
+import { User } from "../../models/user";
+
+let modalContainer;
+let form;
+let loadedUser = {};
 
 /**
  *
@@ -12,13 +17,31 @@ let modalContainer, form;
  *
  * @param {String|Number} id
  */
-export const showModal = (id=null) => {
+export const showModal = async(id) => {
     modalContainer.classList.remove("hidden");
+    loadedUser = {};
+
+    if (!id) return;
+    const user = await getUserById(id);
+    setValues(user);
 }
 
 export const hiddenModal = () => {
     modalContainer.classList.add('hidden');
     form?.reset();
+}
+
+/**
+ *
+ * @param {User} user
+ */
+const setValues = (user) => {
+    form.querySelector('[name="firstName"]').value = user.firstName;
+    form.querySelector('[name="lastName"]').value = user.lastName;
+    form.querySelector('[name="gender"]').value = user.gender;
+    form.querySelector('[name="balance"]').value = user.balance;
+    form.querySelector('[name="isActive"]').checked = user.isActive;
+    loadedUser = user;
 }
 
 export const renderModal = (element, userCallback) => {
@@ -35,24 +58,25 @@ export const renderModal = (element, userCallback) => {
         if (event.target.id !== 'modal-shadow') return;
         hiddenModal();
     });
-    btnClose.addEventListener('click', hiddenModal);
-
-
+    btnClose.addEventListener('click', () => {
+        hiddenModal();
+    });
 
     form.addEventListener('submit', async(event) => {
         event.preventDefault();
 
         const formData = new FormData(form);
-        const userData = {};
+        const userData = { ...loadedUser };
+
         for ( const [key, value] of formData ) {
             if (key === 'balance') {
                 userData[key] = +value;
-            } else if ((key == 'isActive') && (value === 'on') ) {
-                userData[key] = true;
             } else {
                 userData[key] = value;
             }
         }
+        userData['isActive'] = (formData.get('isActive') == 'on') ? true : false;
+
         await userCallback(userData);
     });
 }

@@ -1,5 +1,6 @@
-import { localToSerMapper } from "../mappers";
+import { localToSerMapper, userMapper } from "../mappers";
 import { User } from "../models/user";
+import { hiddenModal } from "../presentation/render-modal/render-modal";
 
 /**
  *
@@ -15,14 +16,15 @@ export const saveUser = async( userData ) => {
     }
 
     const userMapping = localToSerMapper(user);
+    let userUpdated;
 
     if ( user.id ) {
-        // TODO: Codigo para actualizar usuario
-        throw 'No implementado';
-        return;
+        userUpdated = await updateUser(userMapping);
+    } else {
+        userUpdated = await createUser(userMapping);
     }
-
-    return await createUser(userMapping);
+    hiddenModal();
+    return userMapper(userUpdated);
 }
 
 /**
@@ -32,7 +34,7 @@ export const saveUser = async( userData ) => {
 const createUser = async( userData ) => {
     const url = `${import.meta.env.VITE_URL_BASE}/users`;
 
-    const response = fetch(url, {
+    const response = await fetch(url, {
         method: 'POST',
         body: JSON.stringify(userData),
         headers: {
@@ -40,8 +42,27 @@ const createUser = async( userData ) => {
         }
     });
 
-    const newUser = await response.json();
-    return newUser;
+    return await response.json();
+}
+
+
+/**
+ *
+ * @param {User} userData
+ * @returns
+ */
+const updateUser = async( userData ) => {
+    const url = `${import.meta.env.VITE_URL_BASE}/users/${userData.id}`;
+
+    const response = await fetch(url, {
+        method: 'PATCH',
+        body: JSON.stringify(userData),
+        headers: {
+            'Content-type': 'application/json',
+        }
+    });
+
+    return await response.json();
 }
 
 /**

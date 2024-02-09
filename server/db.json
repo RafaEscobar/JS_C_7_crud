@@ -3,10 +3,10 @@
     {
       "id": "1",
       "isActive": false,
-      "balance": 1397.32,
+      "balance": 99999,
       "avatar": "http://placehold.it/32x32",
-      "first_name": "Ryan",
-      "last_name": "Kent",
+      "first_name": "Edwar",
+      "last_name": "Elrick",
       "gender": "male"
     },
     {
@@ -29,8 +29,8 @@
     },
     {
       "id": "4",
-      "isActive": false,
-      "balance": 1601.54,
+      "isActive": true,
+      "balance": 1601,
       "avatar": "http://placehold.it/32x32",
       "first_name": "Henry",
       "last_name": "Hunt",
@@ -38,8 +38,8 @@
     },
     {
       "id": "5",
-      "isActive": false,
-      "balance": 1455.08,
+      "isActive": true,
+      "balance": 1455,
       "avatar": "http://placehold.it/32x32",
       "first_name": "Mia",
       "last_name": "Wade",
@@ -47,8 +47,8 @@
     },
     {
       "id": "6",
-      "isActive": false,
-      "balance": 2950.3,
+      "isActive": true,
+      "balance": 2950,
       "avatar": "http://placehold.it/32x32",
       "first_name": "Tyler",
       "last_name": "Rocha",
@@ -446,24 +446,48 @@
       "isActive": true,
       "balance": 1174.43,
       "avatar": "http://placehold.it/32x32",
-      "first_name": "Final",
-      "last_name": "Final del fin",
+      "first_name": "Mcbride",
+      "last_name": "Woodward",
       "gender": "male"
     },
     {
-      "id": "6aee",
-      "first_name": "Rafa",
-      "last_name": "Escobar",
-      "gender": "male",
-      "balance": ""
-    },
-    {
-      "id": "5604",
-      "first_name": "Rafael ",
-      "last_name": "Escobar Gutierrez",
+      "id": "e38b",
+      "first_name": "Rocky",
+      "last_name": "Balboa",
       "isActive": true,
       "gender": "male",
-      "balance": 1800
+      "balance": 2000
+    },
+    {
+      "id": "c94c",
+      "first_name": "Rafael",
+      "last_name": "Escobar",
+      "gender": "male",
+      "balance": 1500
+    },
+    {
+      "id": "fde2",
+      "first_name": "Jaimito",
+      "last_name": "El cartero",
+      "isActive": false,
+      "gender": "male",
+      "balance": 0
+    },
+    {
+      "id": "ea0a",
+      "first_name": "Pedro",
+      "last_name": "Pascal",
+      "isActive": true,
+      "gender": "male",
+      "balance": 1000
+    },
+    {
+      "id": "2c0e",
+      "first_name": "Pedro",
+      "last_name": "Pascalini",
+      "isActive": false,
+      "gender": "male",
+      "balance": 1001
     }
   ]
 }

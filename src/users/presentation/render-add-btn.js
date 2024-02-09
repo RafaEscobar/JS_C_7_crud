@@ -20,5 +20,7 @@ export const renderAddButton = (element) => {
     divContainer.append(btn);
     element.append(divContainer);
 
-    btn.addEventListener('click', showModal);
+    btn.addEventListener('click', () => {
+        showModal();
+    });
 }

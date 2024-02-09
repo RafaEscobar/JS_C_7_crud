@@ -1,4 +1,5 @@
 import usersStore from "../storage/users-store";
+import { showModal } from "./render-modal/render-modal";
 
 let table
 
@@ -29,9 +30,9 @@ const createTable = () => {
  * @param {MouseEvent} event
  */
 const selectUser = (event) => {
-    const selectedUser = event.target.closest('.select-user');
-    if (selectedUser == null) return;
-
+    const userId = event.target.closest('.select-user');
+    if (userId == null) return;
+    showModal(userId.getAttribute('data-id'));
 }
 
 /**

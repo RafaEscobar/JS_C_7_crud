@@ -1,5 +1,4 @@
-
-import { saveUser } from "./modules/save-user";
+import { saveUser } from "./modules";
 import { renderAddButton } from "./presentation/render-add-btn";
 import { renderBtns } from "./presentation/render-btns";
 import { renderModal } from "./presentation/render-modal/render-modal";
@@ -18,7 +17,9 @@ export const userApp = async(element) => {
     renderAddButton(element);
     renderModal(element, async(userData) => {
         const user = await saveUser(userData);
-        // userStore.onUserChange(user);
-        // renderTable();
+        if (user != null) {
+            userStore.onUserChange(user);
+            renderTable();
+        }
     });
 }
