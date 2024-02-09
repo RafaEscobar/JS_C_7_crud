@@ -1,3 +1,4 @@
+import { deleteUserById } from "../modules/delete-user-by-id";
 import usersStore from "../storage/users-store";
 import { showModal } from "./render-modal/render-modal";
 
@@ -37,6 +38,25 @@ const selectUser = (event) => {
 
 /**
  *
+ * @param {MouseEvent} event
+ */
+const deleteUser = async(event) => {
+    const userId = event.target.closest('.delete-user');
+    if (userId == null) return;
+
+    const id = userId.getAttribute('data-id');
+    try {
+        await deleteUserById(id);
+        await usersStore.reloadPage();
+        document.querySelector(".labelPage").innerText = usersStore.getCurrentPage();
+        renderTable();
+    } catch (error) {
+        alert(error);
+    }
+}
+
+/**
+ *
  * @param {HTMLDivElement} element
  */
 export const renderTable = (element) => {
@@ -48,6 +68,7 @@ export const renderTable = (element) => {
     }
 
     table.addEventListener('click', selectUser);
+    table.addEventListener('click', deleteUser);
 
     let tableBody = '';
 
