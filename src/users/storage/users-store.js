@@ -1,6 +1,7 @@
 import {loadUsersByPage} from '../modules/index';
 
 const state = {
+    pages: 0,
     currentPage: 0,
     users: [],
 }
@@ -10,7 +11,7 @@ const state = {
  */
 const loadNextPage = async() => {
     const users = await loadUsersByPage(state.currentPage + 1);
-    if (users.length == 0) return;
+    if (state.currentPage == state.pages) return;
 
     state.currentPage += 1;
     state.users = users;
@@ -20,14 +21,18 @@ const loadNextPage = async() => {
  * Load the previous page of data
  */
 const loadPreviousPage = async() => {
+    if (state.currentPage == 1) return;
+    const users = await loadUsersByPage(state.currentPage - 1);
 
+    state.currentPage -= 1;
+    state.users = users
 }
 
 /**
  * When a user change his data
  */
 const onUserChange = () => {
-
+    throw new Error('Ignora esto parse');
 }
 
 /**
@@ -37,15 +42,21 @@ const reloadPage = () => {
 
 }
 
+const setPages = (pages) => {
+    state.pages = pages;
+}
+
 export default {
     loadNextPage,
     loadPreviousPage,
     onUserChange,
     reloadPage,
+    setPages,
     /**
-     * 
+     *
      * @returns {User[]}
      */
     getUsers: () => [...state.users],
     getCurrentPage: () => state.currentPage,
+    getPages: () => state.pages,
 }
