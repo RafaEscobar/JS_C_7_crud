@@ -464,6 +464,14 @@
       "last_name": "Escobar",
       "gender": "male",
       "balance": 1500
+    },
+    {
+      "id": "fde2",
+      "first_name": "Jaimito",
+      "last_name": "El cartero",
+      "isActive": false,
+      "gender": "male",
+      "balance": 0
     }
   ]
 }

@@ -62,8 +62,6 @@ export const renderModal = (element, userCallback) => {
         hiddenModal();
     });
 
-
-
     form.addEventListener('submit', async(event) => {
         event.preventDefault();
 
@@ -72,11 +70,14 @@ export const renderModal = (element, userCallback) => {
         for ( const [key, value] of formData ) {
             if (key === 'balance') {
                 userData[key] = +value;
-            } else if ((key == 'isActive') && (value === 'on') ) {
+            } else if ((key == 'isActive') ) {
                 userData[key] = true;
             } else {
                 userData[key] = value;
             }
+        }
+        if (!('isActive' in userData)) {
+            userData['isActive'] = false;
         }
         await userCallback(userData);
     });
