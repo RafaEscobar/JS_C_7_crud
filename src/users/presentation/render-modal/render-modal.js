@@ -1,7 +1,10 @@
 import modal from "./render-modal.html?raw";
 import { getUserById } from "../../modules";
+import { User } from "../../models/user";
 
-let modalContainer, form, loadedUser;
+let modalContainer;
+let form;
+let loadedUser = {};
 
 /**
  *
@@ -16,14 +19,29 @@ let modalContainer, form, loadedUser;
  */
 export const showModal = async(id) => {
     modalContainer.classList.remove("hidden");
+    loadedUser = {};
 
     if (!id) return;
-    loadedUser = await getUserById(id);
+    const user = await getUserById(id);
+    setValues(user);
 }
 
 export const hiddenModal = () => {
     modalContainer.classList.add('hidden');
     form?.reset();
+}
+
+/**
+ *
+ * @param {User} user
+ */
+const setValues = (user) => {
+    form.querySelector('[name="firstName"]').value = user.firstName;
+    form.querySelector('[name="lastName"]').value = user.lastName;
+    // form.querySelector('[name"genere"]').value = user.firstName;
+    form.querySelector('[name="balance"]').value = user.balance;
+    form.querySelector('[name="isActive"]').value = user.isActive;
+    loadedUser = user;
 }
 
 export const renderModal = (element, userCallback) => {
@@ -50,7 +68,7 @@ export const renderModal = (element, userCallback) => {
         event.preventDefault();
 
         const formData = new FormData(form);
-        const userData = {};
+        const userData = { ...loadedUser };
         for ( const [key, value] of formData ) {
             if (key === 'balance') {
                 userData[key] = +value;
