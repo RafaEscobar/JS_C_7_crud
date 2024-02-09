@@ -1,5 +1,5 @@
 import modal from "./render-modal.html?raw";
-let modalContainer, form;
+let modalContainer, form, loadedUser;
 
 /**
  *
@@ -12,8 +12,11 @@ let modalContainer, form;
  *
  * @param {String|Number} id
  */
-export const showModal = (id=null) => {
+export const showModal = async(id) => {
     modalContainer.classList.remove("hidden");
+
+    if (!id) return;
+    loadedUser = await getUserById(id);
 }
 
 export const hiddenModal = () => {
@@ -35,7 +38,9 @@ export const renderModal = (element, userCallback) => {
         if (event.target.id !== 'modal-shadow') return;
         hiddenModal();
     });
-    btnClose.addEventListener('click', hiddenModal);
+    btnClose.addEventListener('click', () => {
+        hiddenModal();
+    });
 
 
 
