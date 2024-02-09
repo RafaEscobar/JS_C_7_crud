@@ -1,4 +1,6 @@
 import modal from "./render-modal.html?raw";
+import { getUserById } from "../../modules";
+
 let modalContainer, form, loadedUser;
 
 /**

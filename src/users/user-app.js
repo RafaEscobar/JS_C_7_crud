@@ -1,5 +1,4 @@
-
-import { saveUser } from "./modules/save-user";
+import { saveUser } from "./modules";
 import { renderAddButton } from "./presentation/render-add-btn";
 import { renderBtns } from "./presentation/render-btns";
 import { renderModal } from "./presentation/render-modal/render-modal";
